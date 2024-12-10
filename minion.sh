@@ -367,7 +367,7 @@ extract_file_contents_into_prompt() {
   rm -f "$FILE_CONTENTS_PROMPT_FILE"
 
   # List of common programming file extensions
-  local FILE_EXTENSIONS=("js" "py" "java" "c" "cpp" "cs" "php" "rb" "sql" "swift" "go" "ts" "pl" "rs" "dart" "lua" "kt" "groovy" "scala" "r")
+  local FILE_EXTENSIONS=("js" "py" "java" "c" "cpp" "cs" "php" "rb" "sql" "swift" "go" "ts" "pl" "rs" "dart" "lua" "kt" "groovy" "scala" "r" "tf")
   # Define an array of directories to ignore
   local IGNORED_DIRS=("node_modules" "build" "dist" ".esbuild" ".webpack" ".serverless" "coverage" "jest-coverage")
 
@@ -442,6 +442,9 @@ start() {
     exit 1
     ;;
   esac
+
+  # Clean up the temporary file
+  rm -rf "$FILE_CONTENTS_PROMPT_FILE"
 
   exit 0
 }
